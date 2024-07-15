@@ -112,21 +112,20 @@ class Chatbot:
         prompt: instructions for the chatbot.
         """       
 
-        # Determine the number of exchanges between two bots
+   
         exchange_counts_dict = {
             'Short': {'Conversation': 8, 'Debate': 4},
             'Long': {'Conversation': 16, 'Debate': 8}
         }
         exchange_counts = exchange_counts_dict[self.session_length][self.learning_mode]
         
-        # Determine number of arguments in one debate round
+  
         argument_num_dict = {
             'Beginner': 4,
             'Intermediate': 6,
             'Advanced': 8
         }        
         
-        # Determine language complexity
         if self.proficiency_level == 'Beginner':
             lang_requirement = """use as basic and simple vocabulary and
             sentence structures as possible. Must avoid idioms, slang, 
