@@ -23,8 +23,7 @@ model_name = 'tiiuae/falcon-40b-instruct'
 
 device = f'cuda:{cuda.current_device()}' if cuda.is_available() else 'cpu'
 
-# set quantization configuration to load large model with less GPU memory
-# this requires the `bitsandbytes` library
+
 bnb_config = transformers.BitsAndBytesConfig(
     # load_in_4bit=True,
     bnb_4bit_quant_type='nf4',
