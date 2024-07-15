@@ -23,21 +23,21 @@ AUDIO_SPEECH = {
 }
 AVATAR_SEED = [123, 42]
 
-# Define backbone llm
-engine = 'OpenAI'
-# engine = 'Llama2'
 
-# Set the title of the app
+engine = 'OpenAI'
+
+
+
 st.title('Language Learning App 🌍📖🎓')
 
-# Set the description of the app
+
 st.markdown("""
 This app generates conversation or debate scripts to aid in language learning 🎯 
 
 Choose your desired settings and press 'Generate' to start 🚀
 """)
 
-# Add a selectbox for learning mode
+
 learning_mode = st.sidebar.selectbox('Learning Mode 📖', ('Conversation', 'Debate'))
 
 if learning_mode == 'Conversation':
@@ -48,7 +48,7 @@ if learning_mode == 'Conversation':
     scenario = st.sidebar.text_input('Scenario 🎥')
     time_delay = 2
 
-    # Configure role dictionary
+ 
     role_dict = {
         'role1': {'name': role1, 'action': action1},
         'role2': {'name': role2, 'action': action2}
@@ -119,20 +119,18 @@ def show_messages(mesg_1, mesg_2, message_counter,
                 key=message_counter)
         message_counter += 1
         
-        # Mimic time interval between conversations
-        # (this time delay only appears when generating 
-        # the conversation script for the first time)
+      
         if not batch:
             time.sleep(time_delay)
 
-        # Show translated exchange
+     
         if translation:
             message(f"{mesg['translation']}", is_user=i==1, avatar_style="bottts", 
                     seed=AVATAR_SEED[i], 
                     key=message_counter)
             message_counter += 1
 
-        # Append autio to the exchange
+
         if audio:
             tts = gTTS(text=mesg['content'], lang=AUDIO_SPEECH[language])  
             sound_file = BytesIO()
@@ -142,10 +140,10 @@ def show_messages(mesg_1, mesg_2, message_counter,
     return message_counter
 
 
-# Define the button layout at the beginning
+
 translate_col, original_col, audio_col = st.columns(3)
 
-# Create the conversation container
+
 conversation_container = st.container()
 
 if 'dual_chatbots' not in st.session_state:
